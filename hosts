@@ -1,7 +1,7 @@
 [linux]
-45.76.202.163
+45.76.202.xxx
 
 [linux:vars]
 ansible_connection=ssh  
 ansible_user=root
-ansible_ssh_pass=h!2Q5Gswe$qJTB.#
+ansible_ssh_pass=xxxxxxxxxxxxxxxxx
