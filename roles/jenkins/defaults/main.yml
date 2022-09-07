@@ -8,8 +8,8 @@ jenkins_cli_url: http://localhost:8080/jnlpJars/jenkins-cli.jar
 
 groovy_init_dir: /var/lib/jenkins/init.groovy.d
 
-groovy_basic_security_url: https://raw.githubusercontent.com/theJaxon/ImmutableTesting/master/roles/jenkins/bypass%20setup%20wizard/basic-security.groovy
+groovy_basic_security_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/basic-security.groovy
 
-plugins_script_url: https://raw.githubusercontent.com/theJaxon/ImmutableTesting/master/roles/jenkins/bypass%20setup%20wizard/plugins.sh
+plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/plugins.sh
 
 vagrant_home_dir: /home/vagrant
