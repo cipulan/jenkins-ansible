@@ -11,7 +11,7 @@
 
 - name: Add apt repository for stable version
   apt_repository:
-    repo: "{{ bionic_repo }}"
+    repo: "{{ jammy_repo }}"
     state: present
 
 - name: Install docker and its dependecies
@@ -22,6 +22,11 @@
 - name: Add vagrant user to docker group
   user:
     name: vagrant
+    group: docker
+
+- name: Add ubuntu user to docker group
+  user:
+    name: ubuntu
     group: docker
 
 - name: Enable and start Docker service 
