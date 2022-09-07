@@ -1,5 +1,7 @@
 # Ansinble Jenkins
 
+* Pada tasks install plugin jenkins perlu di bagi beberapa part agar tidak menunggu terlalu lama.
+
 ## Aplikasi Yang Terinstall
 
 * docker
