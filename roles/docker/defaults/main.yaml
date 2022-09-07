@@ -7,7 +7,7 @@ apt_http_packages:
 
 docker_signing_url: https://download.docker.com/linux/ubuntu/gpg
 
-bionic_repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+bionic_repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable
 
 docker_packages: 
   - docker-ce 
