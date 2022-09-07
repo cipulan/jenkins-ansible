@@ -1,5 +1,0 @@
-- hosts: linux
-  become: true
-  become_method: sudo
-  roles:
-    - firewall
