@@ -1,0 +1,9 @@
+---
+- name: Enabling UFW, allowing all traffic
+  community.general.ufw:
+    state: enabled
+    policy: allow
+
+- name: Set logging
+  community.general.ufw:
+    logging: 'on'

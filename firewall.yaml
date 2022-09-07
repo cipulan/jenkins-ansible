@@ -3,7 +3,3 @@
   become_method: sudo
   roles:
     - firewall
-    - docker 
-    - docker-compose
-    - portainer
-    - jenkins
