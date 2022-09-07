@@ -12,4 +12,4 @@ groovy_basic_security_url: https://raw.githubusercontent.com/cipulan/jenkins-ans
 
 plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/plugins.sh
 
-vagrant_home_dir: /home/ubuntu
+home_dir: /home/ubuntu

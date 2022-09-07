@@ -63,7 +63,7 @@
 - name: Download Plugins script into vagrant home directory
   get_url:
     url: "{{ plugins_script_url }}"
-    dest: "{{ vagrant_home_dir }}"
+    dest: "{{ home_dir }}"
     mode: '0777'
 
 - name: Restart jenkins service 
@@ -77,7 +77,7 @@
 - name: Download jenkins cli into vagrant home directory 
   get_url:
     url: "{{ jenkins_cli_url }}"
-    dest: "{{ vagrant_home_dir }}"
+    dest: "{{ home_dir }}"
     mode: '0777'
   retries: 5
   delay: 5
@@ -85,7 +85,7 @@
   until: result is succeeded
 
 - name: Run plugins scripts
-  shell: "{{vagrant_home_dir}}/plugins.sh"
+  shell: "{{home_dir}}/plugins.sh"
   args:
     executable: /bin/bash
   register: plugins_script

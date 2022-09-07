@@ -21,9 +21,13 @@ declare -a PluginList=(
     "timestamper"
     "workflow-aggregator"
     "ws-cleanup"
+    "gitea"
+    "blueocean"
     "docker-plugin"
 )
 
+dirname "$0"
+
 for plugin in ${PluginList[@]}; do
-   java -jar /home/ubuntu/jenkins-cli.jar -auth admin:admin -s http://localhost:8080/ install-plugin $plugin
+   java -jar "$(dirname "$0")/jenkins-cli.jar" -auth admin:admin -s http://localhost:8080/ install-plugin $plugin
 done
