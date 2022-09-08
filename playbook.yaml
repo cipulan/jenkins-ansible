@@ -1,4 +1,7 @@
 - hosts: linux
+  vars:
+    certbot_package: "python3-certbot-nginx"
+    certbot_plugin: "nginx"
   become: true
   become_method: sudo
   roles:
@@ -7,3 +10,6 @@
     - docker-compose
     - portainer
     - jenkins
+    - install-nginx
+    - letsencrypt
+    - nginx-proxy

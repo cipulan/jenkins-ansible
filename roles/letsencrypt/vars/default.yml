@@ -1,8 +1,0 @@
-certbot_site_names: {
-    host1: "{{ domain }}",
-    # host2: "www.{ domain }}",
- }
- 
-certbot_package: "python3-certbot-nginx"
-certbot_plugin: "nginx"
-certbot_mail_address: {{ email }}
