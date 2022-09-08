@@ -90,13 +90,13 @@
   until: result is succeeded
 
 - name: Run plugins scripts
-  shell: "{{home_dir}}/default-plugins.sh"
+  shell: "{{home_dir}}/default-plugin.sh"
   args:
     executable: /bin/bash
   register: plugins_script
 
 - name: Run plugins scripts
-  shell: "{{home_dir}}/add-plugins.sh"
+  shell: "{{home_dir}}/add-plugin.sh"
   args:
     executable: /bin/bash
   register: plugins_script
