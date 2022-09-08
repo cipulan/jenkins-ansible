@@ -2,6 +2,23 @@
 
 * Pada tasks install plugin jenkins perlu di bagi beberapa part agar tidak menunggu terlalu lama.
 
+File **hosts**
+
+[linux]
+103.30.xxx.xxx
+
+[linux:vars]
+domain=ansible2.domain.com
+email=email@domain.com
+
+ansible_connection=ssh  
+ansible_user=ubuntu
+ansible_ssh_private_key_file=~/.ssh/id_rsa
+
+#ansible_user=root
+#ansible_ssh_pass=xxxx
+
+
 ## Aplikasi Yang Terinstall
 
 * docker
