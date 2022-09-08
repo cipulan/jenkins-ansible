@@ -1,6 +1,5 @@
 #!/bin/bash
 declare -a PluginList=(
-    "gitea" 
     "ant"
     "antisamy-markup-formatter"
     "build-timeout"
@@ -21,9 +20,6 @@ declare -a PluginList=(
     "timestamper"
     "workflow-aggregator"
     "ws-cleanup"
-    "gitea"
-    "blueocean"
-    "docker-plugin"
 )
 
 dirname "$0"

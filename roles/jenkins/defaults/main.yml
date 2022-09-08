@@ -10,6 +10,8 @@ groovy_init_dir: /var/lib/jenkins/init.groovy.d
 
 groovy_basic_security_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/basic-security.groovy
 
-plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/plugins.sh
+default_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/default-plugins.sh
+
+add_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/add-plugins.sh
 
 home_dir: /home/ubuntu

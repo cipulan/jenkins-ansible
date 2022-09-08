@@ -33,7 +33,6 @@
   with_items: 
     - docker
 
-
 - name: Disable jenkins setup wizard
   lineinfile:
     path: "{{ jenkins_config_file }}"
@@ -62,7 +61,13 @@
 
 - name: Download Plugins script into vagrant home directory
   get_url:
-    url: "{{ plugins_script_url }}"
+    url: "{{ default_plugins_script_url }}"
+    dest: "{{ home_dir }}"
+    mode: '0777'
+
+- name: Download Plugins script into vagrant home directory
+  get_url:
+    url: "{{ add_plugins_script_url }}"
     dest: "{{ home_dir }}"
     mode: '0777'
 
@@ -85,7 +90,13 @@
   until: result is succeeded
 
 - name: Run plugins scripts
-  shell: "{{home_dir}}/plugins.sh"
+  shell: "{{home_dir}}/default-plugins.sh"
+  args:
+    executable: /bin/bash
+  register: plugins_script
+
+- name: Run plugins scripts
+  shell: "{{home_dir}}/add-plugins.sh"
   args:
     executable: /bin/bash
   register: plugins_script
