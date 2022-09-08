@@ -2,4 +2,6 @@
   become: true
   become_method: sudo
   roles:
-    - nginx
+    - install-nginx
+    - letsencrypt
+    - nginx-proxy

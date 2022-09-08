@@ -1,8 +1,3 @@
-- name: "install nginx"
-  apt:
-    name: ['nginx']
-    state: latest
-
 - name: delete default nginx site
   file:
     path: /etc/nginx/sites-enabled/default
@@ -17,3 +12,9 @@
     group: root
     mode: '0644'
   notify: restart nginx
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
+  become: yes
