@@ -10,16 +10,16 @@ groovy_init_dir: /var/lib/jenkins/init.groovy.d
 
 groovy_basic_security_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/basic-security.groovy
 
-list01_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/dev/roles/jenkins/bypass-setup-wizard/list01-plugins.sh
+list01_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/list01-plugins.sh
 
-list02_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/dev/roles/jenkins/bypass-setup-wizard/list02-plugins.sh
+list02_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/list02-plugins.sh
 
-list03_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/dev/roles/jenkins/bypass-setup-wizard/list03-plugins.sh
+list03_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/list03-plugins.sh
 
-list04_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/dev/roles/jenkins/bypass-setup-wizard/list04-plugins.sh
+list04_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/list04-plugins.sh
 
-list05_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/dev/roles/jenkins/bypass-setup-wizard/list05-plugins.sh
+list05_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/list05-plugins.sh
 
-add_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/dev/roles/jenkins/bypass-setup-wizard/add-plugins.sh
+add_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/add-plugins.sh
 
 working_dir: /home/ubuntu
