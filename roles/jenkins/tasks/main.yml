@@ -1,3 +1,8 @@
+- name: "apt-get update"
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
 - name: Add an apt signing key for Jenkins
   apt_key:
     url: "{{ jenkins_signing_key_url }}"
@@ -9,7 +14,6 @@
     state: present
     filename: jenkins
     update_cache: yes
-
 
 - name: Install JRE 
   apt:
@@ -59,18 +63,6 @@
 - name: Include wait for jenkins task
   include_tasks: jenkins_check.yml
 
-- name: Download Plugins script into vagrant home directory
-  get_url:
-    url: "{{ default_plugins_script_url }}"
-    dest: "{{ home_dir }}"
-    mode: '0777'
-
-- name: Download Plugins script into vagrant home directory
-  get_url:
-    url: "{{ add_plugins_script_url }}"
-    dest: "{{ home_dir }}"
-    mode: '0777'
-
 - name: Restart jenkins service 
   service:
       name: jenkins
@@ -82,30 +74,110 @@
 - name: Download jenkins cli into vagrant home directory 
   get_url:
     url: "{{ jenkins_cli_url }}"
-    dest: "{{ home_dir }}"
+    dest: "{{ working_dir }}"
     mode: '0777'
   retries: 5
   delay: 5
   register: result      
   until: result is succeeded
 
+- name: Download Plugins script into vagrant home directory
+  get_url:
+    url: "{{ list01_plugins_script_url }}"
+    dest: "{{ working_dir }}"
+    mode: '0777'
+  register: result      
+  until: result is succeeded
+
 - name: Run plugins scripts
-  shell: "{{home_dir}}/default-plugin.sh"
+  shell: "{{working_dir}}/list01-plugins.sh"
   args:
     executable: /bin/bash
   register: plugins_script
+  notify: Show installed plugins
+  notify: Restart jenkins service
+
+- name: Include wait for jenkins task
+  include_tasks: jenkins_check.yml
+
+- name: Download Plugins script into vagrant home directory
+  get_url:
+    url: "{{ list02_plugins_script_url }}"
+    dest: "{{ working_dir }}"
+    mode: '0777'
 
 - name: Run plugins scripts
-  shell: "{{home_dir}}/add-plugin.sh"
+  shell: "{{working_dir}}/list02-plugins.sh"
   args:
     executable: /bin/bash
   register: plugins_script
+  notify: Show installed plugins
+  notify: Restart jenkins service
 
-- name: Show installed plugins
-  debug:
-    var: plugins_script.stdout
+- name: Include wait for jenkins task
+  include_tasks: jenkins_check.yml
 
-- name: Restart jenkins service 
-  service:
-      name: jenkins
-      state: restarted
+- name: Download Plugins script into vagrant home directory
+  get_url:
+    url: "{{ list03_plugins_script_url }}"
+    dest: "{{ working_dir }}"
+    mode: '0777'
+
+- name: Run plugins scripts
+  shell: "{{working_dir}}/list03-plugins.sh"
+  args:
+    executable: /bin/bash
+  register: plugins_script
+  notify: Show installed plugins
+  notify: Restart jenkins service
+
+- name: Include wait for jenkins task
+  include_tasks: jenkins_check.yml
+
+- name: Download Plugins script into vagrant home directory
+  get_url:
+    url: "{{ list04_plugins_script_url }}"
+    dest: "{{ working_dir }}"
+    mode: '0777'
+
+- name: Run plugins scripts
+  shell: "{{working_dir}}/list04-plugins.sh"
+  args:
+    executable: /bin/bash
+  register: plugins_script
+  notify: Show installed plugins
+  notify: Restart jenkins service
+
+- name: Include wait for jenkins task
+  include_tasks: jenkins_check.yml
+
+- name: Download Plugins script into vagrant home directory
+  get_url:
+    url: "{{ list05_plugins_script_url }}"
+    dest: "{{ working_dir }}"
+    mode: '0777'
+
+- name: Run plugins scripts
+  shell: "{{working_dir}}/list05-plugins.sh"
+  args:
+    executable: /bin/bash
+  register: plugins_script
+  notify: Show installed plugins
+  notify: Restart jenkins service
+
+- name: Include wait for jenkins task
+  include_tasks: jenkins_check.yml
+  
+- name: Download Plugins script into vagrant home directory
+  get_url:
+    url: "{{ add_plugins_script_url }}"
+    dest: "{{ working_dir }}"
+    mode: '0777'
+
+- name: Run plugins scripts
+  shell: "{{working_dir}}/add-plugins.sh"
+  args:
+    executable: /bin/bash
+  register: plugins_script
+  notify: Show installed plugins
+  notify: Restart jenkins service
