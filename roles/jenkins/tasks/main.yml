@@ -71,7 +71,7 @@
 - name: Include wait for jenkins task
   include_tasks: jenkins_check.yml
 
-- name: Download jenkins cli into vagrant home directory 
+- name: Download jenkins cli into workingdirectory 
   get_url:
     url: "{{ jenkins_cli_url }}"
     dest: "{{ working_dir }}"
@@ -81,7 +81,7 @@
   register: result      
   until: result is succeeded
 
-- name: Download Plugins script into vagrant home directory
+- name: Download Plugins script into working directory
   get_url:
     url: "{{ list01_plugins_script_url }}"
     dest: "{{ working_dir }}"
@@ -89,10 +89,12 @@
   register: result      
   until: result is succeeded
 
-- name: Run plugins scripts
+- name: Download & Install List01 Plugins
   shell: "{{working_dir}}/list01-plugins.sh"
   args:
     executable: /bin/bash
+  retries: 5
+  delay: 5
   register: plugins_script
   notify: Show installed plugins
   notify: Restart jenkins service
@@ -106,7 +108,7 @@
     dest: "{{ working_dir }}"
     mode: '0777'
 
-- name: Run plugins scripts
+- name: Download & Install List02 Plugins
   shell: "{{working_dir}}/list02-plugins.sh"
   args:
     executable: /bin/bash
@@ -123,7 +125,7 @@
     dest: "{{ working_dir }}"
     mode: '0777'
 
-- name: Run plugins scripts
+- name: Download & Install List03 Plugins
   shell: "{{working_dir}}/list03-plugins.sh"
   args:
     executable: /bin/bash
@@ -140,7 +142,7 @@
     dest: "{{ working_dir }}"
     mode: '0777'
 
-- name: Run plugins scripts
+- name: Download & Install List04 Plugins
   shell: "{{working_dir}}/list04-plugins.sh"
   args:
     executable: /bin/bash
@@ -157,7 +159,7 @@
     dest: "{{ working_dir }}"
     mode: '0777'
 
-- name: Run plugins scripts
+- name: Download & Install List05 Plugins
   shell: "{{working_dir}}/list05-plugins.sh"
   args:
     executable: /bin/bash
@@ -174,7 +176,7 @@
     dest: "{{ working_dir }}"
     mode: '0777'
 
-- name: Run plugins scripts
+- name: Download & Install Additional Plugins
   shell: "{{working_dir}}/add-plugins.sh"
   args:
     executable: /bin/bash
