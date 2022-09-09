@@ -3,11 +3,17 @@
   community.general.timezone:
     name: Asia/Jakarta
 
+- name: Check if ufw is installed.
+  stat: path="/usr/sbin/ufw"
+  register: ufw_installed
+
 - name: Enabling UFW, allowing all traffic
   community.general.ufw:
     state: enabled
     policy: allow
+  when: ufw_installed.stat.exists
 
 - name: Set logging
   community.general.ufw:
     logging: 'on'
+  when: ufw_installed.stat.exists
