@@ -1,0 +1,9 @@
+---
+- name: Restart jenkins service 
+  service:
+    name: jenkins
+    state: restarted
+
+- name: Show installed plugins
+  debug:
+    var: plugins_script.stdout
