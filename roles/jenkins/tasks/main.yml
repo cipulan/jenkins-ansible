@@ -71,7 +71,7 @@
 - name: Include wait for jenkins task
   include_tasks: jenkins_check.yml
 
-- name: Download jenkins cli into workingdirectory 
+- name: Download jenkins cli into working directory 
   get_url:
     url: "{{ jenkins_cli_url }}"
     dest: "{{ working_dir }}"
@@ -96,7 +96,6 @@
   retries: 5
   delay: 5
   register: plugins_script
-  notify: Show installed plugins
   notify: Restart jenkins service
 
 - name: Include wait for jenkins task
@@ -112,8 +111,9 @@
   shell: "{{working_dir}}/list02-plugins.sh"
   args:
     executable: /bin/bash
+  retries: 5
+  delay: 5
   register: plugins_script
-  notify: Show installed plugins
   notify: Restart jenkins service
 
 - name: Include wait for jenkins task
@@ -129,8 +129,9 @@
   shell: "{{working_dir}}/list03-plugins.sh"
   args:
     executable: /bin/bash
+  retries: 5
+  delay: 5
   register: plugins_script
-  notify: Show installed plugins
   notify: Restart jenkins service
 
 - name: Include wait for jenkins task
@@ -146,8 +147,9 @@
   shell: "{{working_dir}}/list04-plugins.sh"
   args:
     executable: /bin/bash
+  retries: 5
+  delay: 5
   register: plugins_script
-  notify: Show installed plugins
   notify: Restart jenkins service
 
 - name: Include wait for jenkins task
@@ -163,8 +165,9 @@
   shell: "{{working_dir}}/list05-plugins.sh"
   args:
     executable: /bin/bash
+  retries: 5
+  delay: 5
   register: plugins_script
-  notify: Show installed plugins
   notify: Restart jenkins service
 
 - name: Include wait for jenkins task
@@ -180,6 +183,7 @@
   shell: "{{working_dir}}/add-plugins.sh"
   args:
     executable: /bin/bash
+  retries: 5
+  delay: 5
   register: plugins_script
-  notify: Show installed plugins
   notify: Restart jenkins service

@@ -1,4 +1,8 @@
 ---
+- name: Set timezone to Asia/Jakarta
+  community.general.timezone:
+    name: Asia/Jakarta
+
 - name: Enabling UFW, allowing all traffic
   community.general.ufw:
     state: enabled

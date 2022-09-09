@@ -6,10 +6,10 @@
   become_method: sudo
   roles:
     - firewall
-  #  - docker 
-  #  - docker-compose
-  #  - portainer
+    - docker 
+    - docker-compose
+    - portainer
     - jenkins
-  #  - install-nginx
-  #  - letsencrypt
-  #  - nginx-proxy
+    - install-nginx
+    - letsencrypt
+    - nginx-proxy
