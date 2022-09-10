@@ -2,7 +2,7 @@
 - name: Set timezone to Asia/Jakarta
   community.general.timezone:
     name: Asia/Jakarta
-
+    
 - name: Check if ufw is installed.
   stat: path="/usr/sbin/ufw"
   register: ufw_installed

@@ -3,38 +3,88 @@
     name: "{{ apt_http_packages }}"
     state: present
     update_cache: yes
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install the latest version of APP
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+  when: ansible_facts['os_family'] == "RedHat"
+
+- name: Uninstall old versions
+  dnf:
+    name:
+      - docker-client
+      - docker-client-latest
+      - docker-common
+      - docker-latest
+      - docker-latest-logrotate
+      - docker-logrotate
+      - docker-engine
+    state: absent
+  when: ansible_facts['os_family'] == "RedHat"
+
+- name: Set up docker repository
+  shell: |
+    dnf install -y yum-utils
+    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  args:
+    warn: no
+  when: ansible_facts['os_family'] == "RedHat"
+
+- name: Install the latest version of Docker Engine and containerd
+  dnf:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+  when: ansible_facts['os_family'] == "RedHat"    
+  notify: Start and enable docker
 
 - name: Add an apt signing key for Docker
   apt_key:
     url: "{{ docker_signing_url }}"
     state: present
+  when: ansible_facts['os_family'] == "Debian"
 
-- name: Add apt repository for stable version
-  apt_repository:
-    repo: "{{ jammy_repo }}"
+- name: Add Repo yum-config-manager
+  apt_key:
+    url: "{{ docker_signing_url }}"
     state: present
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Add apt repository for stable version {{ ansible_distribution | upper }} {{ ansible_distribution_release | upper }}
+  apt_repository:
+    repo: "{{ docker_repo }}"
+    state: present
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Install docker and its dependecies
   apt: 
     name: "{{ docker_packages }}"
     state: present
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Add vagrant user to docker group
   user:
     name: vagrant
     group: docker
+  when: ansible_facts['os_family'] == "Debian"
 
-- name: Add ubuntu user to docker group
+- name: Add {{ ansible_distribution | lower }} user to docker group
   user:
-    name: ubuntu
+    name: "{{ ansible_distribution | lower }}"
     group: docker
+  # when: ansible_facts['os_family'] == "Debian"
 
 - name: Enable and start Docker service 
   service:
     name: docker 
     enabled: yes 
     state: started
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: install docker-py for API calls
   pip:
     name: docker-py
+  when: ansible_facts['os_family'] == "Debian"

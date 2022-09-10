@@ -22,4 +22,4 @@ list05_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ans
 
 add_plugins_script_url: https://raw.githubusercontent.com/cipulan/jenkins-ansible/master/roles/jenkins/bypass-setup-wizard/add-plugins.sh
 
-working_dir: /home/ubuntu
+working_dir: /home/{{ ansible_distribution | lower }}

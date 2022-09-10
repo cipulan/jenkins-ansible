@@ -7,4 +7,5 @@
   apt:
     name: ['nginx']
     state: latest
+  register: nginx_installed
   notify: restart nginx
